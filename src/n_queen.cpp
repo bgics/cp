@@ -1,8 +1,8 @@
-#include <bits/stdc++.h>
+#include <vector>
 using namespace std;
 
-void recursive(vector<bool> &cols, vector<bool> &diag1, vector<bool> &diag2,
-               int &count, int r, int n) {
+void recursive(vector<bool>& cols, vector<bool>& diag1, vector<bool>& diag2,
+               int& count, int r, int n) {
   if (r == n) {
     count++;
     return;
