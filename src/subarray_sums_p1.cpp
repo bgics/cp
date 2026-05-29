@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -20,25 +19,20 @@ int main() {
     arr.push_back(value);
   }
 
-  vector<ll> acc;
-  ll sum = 0;
-  for (auto value : arr) {
-    sum += value;
-    acc.push_back(sum);
-  }
+  int i = 0, j = 0;
+  ll sum = arr[0];
 
   int ans = 0;
-  for (auto it = acc.begin(); it != acc.end(); ++it) {
-    if (*it == x) {
+  while (j < n) {
+    if (sum < x) {
+      if (j == n - 1) break;
+      sum += arr[++j];
+    } else if (sum > x) {
+      sum -= arr[i++];
+    } else {
       ++ans;
-      continue;
+      sum -= arr[i++];
     }
-
-    if (it == acc.begin() || *it < x) {
-      continue;
-    }
-
-    if (binary_search(acc.begin(), it, (*it) - x)) ++ans;
   }
 
   cout << ans;
