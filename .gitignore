@@ -1,6 +1,7 @@
 .direnv
 src/practice
-src/input.txt
+src/*.txt
+.clangd
 
 # Devenv
 .devenv*
