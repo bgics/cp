@@ -5,36 +5,20 @@ using namespace std;
 #define MOD 1000000007
 
 int solve(int x, vector<int>& coins) {
-  vector<int> dp(x + 1);
-  vector<set<multiset<int>>> solutions(x + 1);
+  vector<int> dp(x + 1, 0);
 
   dp[0] = 1;
-  solutions[0] = set<multiset<int>>();
-  solutions[0].insert(multiset<int>({}));
 
-  for (int i = 1; i <= x; i++) {
-    dp[i] = 0;
-    solutions[i] = set<multiset<int>>();
-    for (auto coin : coins) {
+  for (auto coin : coins) {
+    for (int i = 1; i <= x; i++) {
       if (i >= coin) {
         dp[i] += dp[i - coin];
         dp[i] %= MOD;
-
-        for (auto solution : solutions[i - coin]) {
-          solution.insert(coin);
-          solutions[i].insert(solution);
-        }
       }
     }
   }
 
-  // for (auto solution : solutions[x]) {
-  //   for (auto coin : solution) {
-  //     cout << coin << " ";
-  //   }
-  //   cout << "\n";
-  // }
-  return solutions[x].size();
+  return dp[x];
 }
 
 int main() {
