@@ -1,6 +1,4 @@
-#include <iostream>
-#include <set>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 #define ll long long
