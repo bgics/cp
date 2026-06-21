@@ -14,18 +14,8 @@
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
               gcc
-              gdb
-              clang
               clang-tools
             ];
-            shellHook = ''
-                export GCC_BIN=$(which g++)
-                cat > .clangd <<EOF
-              CompileFlags:
-                Add: [-std=c++20]
-                Compiler: $GCC_BIN
-              EOF
-            '';
           };
         };
       }

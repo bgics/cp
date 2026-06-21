@@ -1,0 +1,5 @@
+[language-server.clangd]
+command = "clangd"
+args = [
+  "--query-driver=/nix/store/*/bin/g++"
+]
